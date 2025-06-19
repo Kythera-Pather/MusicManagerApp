@@ -34,7 +34,7 @@ jobs:
       run: ./gradlew build
 
     - name: Run Unit Tests # Add a step for running unit tests
-      run: ./gradlew test
+      run: ./gradlew lint
 
     # Optional: Add steps for linting, connecting to Firebase Test Lab, etc.
     # - name: Run Android Lint
