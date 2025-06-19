@@ -1,32 +1,4 @@
-Okay, you want to change the step in your GitHub Actions workflow that currently runs `./gradlew lint` to run your actual unit tests instead.
-To run standard unit tests (those typically located in `app/src/test/java/your/package/name/`) in a Gradle project, you use the `test` task.
-Here's how you should modify that step in your `.github/workflows/android_ci.yml` file:
-**Current Step (Running Lint):**
 
-
-```
-- name: Run Unit Tests # Add a step for running unit tests
-  run: ./gradlew lint
-```
-
-
-**Modified Step (Running Unit Tests):**
-
-
-```
-- name: Run Unit Tests
-  run: ./gradlew testDebugUnitTest
-```
-
-
-**Explanation of `testDebugUnitTest`:**
-*   `test`: This is the general Gradle task for running tests.
-*   `Debug`: This specifies that you want to run tests associated with the `debug` build type. If you have different tests for different build types (e.g., `release`), you might choose `testReleaseUnitTest`. For most CI scenarios, `testDebugUnitTest` is appropriate.
-*   `UnitTest`: This clarifies that you are running local unit tests (JVM tests), not instrumented tests (which run on an Android device or emulator and would typically use a task like `connectedDebugAndroidTest`).
-**Your updated GitHub Actions workflow file would look like this:**
-
-
-```kotlin
 name: Android CI
 
 on:
