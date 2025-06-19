@@ -1,3 +1,32 @@
+Okay, you want to change the step in your GitHub Actions workflow that currently runs `./gradlew lint` to run your actual unit tests instead.
+To run standard unit tests (those typically located in `app/src/test/java/your/package/name/`) in a Gradle project, you use the `test` task.
+Here's how you should modify that step in your `.github/workflows/android_ci.yml` file:
+**Current Step (Running Lint):**
+
+
+```
+- name: Run Unit Tests # Add a step for running unit tests
+  run: ./gradlew lint
+```
+
+
+**Modified Step (Running Unit Tests):**
+
+
+```
+- name: Run Unit Tests
+  run: ./gradlew testDebugUnitTest
+```
+
+
+**Explanation of `testDebugUnitTest`:**
+*   `test`: This is the general Gradle task for running tests.
+*   `Debug`: This specifies that you want to run tests associated with the `debug` build type. If you have different tests for different build types (e.g., `release`), you might choose `testReleaseUnitTest`. For most CI scenarios, `testDebugUnitTest` is appropriate.
+*   `UnitTest`: This clarifies that you are running local unit tests (JVM tests), not instrumented tests (which run on an Android device or emulator and would typically use a task like `connectedDebugAndroidTest`).
+**Your updated GitHub Actions workflow file would look like this:**
+
+
+```kotlin
 name: Android CI
 
 on:
@@ -19,10 +48,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up JDK 17 # Recommended to use a more recent LTS version for Android development
+    - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '17' # Changed to 17 (LTS) - Android generally benefits from newer JDKs
+        java-version: '17'
         distribution: 'temurin'
         cache: 'gradle'
 
@@ -30,19 +59,9 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      # Consider adding a clean step before building, especially if dealing with cache issues
-      run: ./gradlew build
+      run: ./gradlew build # This will also compile your tests
 
-    - name: Run Unit Tests # Add a step for running unit tests
-      run: ./gradlew lint
+    - name: Run Unit Tests
+      run: ./gradlew testDebugUnitTest # Changed this line
 
-    # Optional: Add steps for linting, connecting to Firebase Test Lab, etc.
-    # - name: Run Android Lint
-    #   run: ./gradlew lint
-
-    # Optional: Upload artifacts if you want to keep the AAB/APK files
-    # - name: Upload AAB/APK
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: app-release 
-    #     path: app/build/outputs/apk/release/app-release.apk # Adjust path as per your project
+    
