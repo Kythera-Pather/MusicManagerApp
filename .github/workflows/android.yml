@@ -1,0 +1,48 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - "master"
+      # You might want to add other branches you push to, e.g., 'develop'
+      # - "develop"
+  pull_request:
+    branches:
+      - "master"
+      # You might want to add other branches you open PRs against
+      # - "develop"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17 # Recommended to use a more recent LTS version for Android development
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17' # Changed to 17 (LTS) - Android generally benefits from newer JDKs
+        distribution: 'temurin'
+        cache: 'gradle'
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build with Gradle
+      # Consider adding a clean step before building, especially if dealing with cache issues
+      run: ./gradlew build
+
+    - name: Run Unit Tests # Add a step for running unit tests
+      run: ./gradlew test
+
+    # Optional: Add steps for linting, connecting to Firebase Test Lab, etc.
+    # - name: Run Android Lint
+    #   run: ./gradlew lint
+
+    # Optional: Upload artifacts if you want to keep the AAB/APK files
+    # - name: Upload AAB/APK
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: app-release
+    #     path: app/build/outputs/apk/release/app-release.apk # Adjust path as per your project
