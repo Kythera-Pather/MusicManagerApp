@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F45E90"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +22,104 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/img" />
+
+        <EditText
+            android:id="@+id/edtComment"
+            android:layout_width="149dp"
+            android:layout_height="34dp"
+            android:background="#E6A0B8"
+            android:backgroundTint="#DC9AB1"
+            android:ems="10"
+            android:hint="𝑪𝒐𝒎𝒎𝒆𝒏𝒕𝒔"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="416dp" />
+
+        <EditText
+            android:id="@+id/edtRating"
+            android:layout_width="149dp"
+            android:layout_height="34dp"
+            android:background="#E6A0B8"
+            android:backgroundTint="#DC9AB1"
+            android:ems="10"
+            android:hint="𝑹𝒂𝒕𝒊𝒏𝒈(1-5)"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="358dp" />
+
+        <EditText
+            android:id="@+id/edtArtistName"
+            android:layout_width="149dp"
+            android:layout_height="34dp"
+            android:background="#E6A0B8"
+            android:backgroundTint="#DC9AB1"
+            android:ems="10"
+            android:hint="𝑨𝒓𝒕𝒊𝒔𝒕 𝑵𝒂𝒎𝒆"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="298dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#00BCD4"
+            android:text="𝓜𝓾𝓼𝓲𝓬 𝓟𝓵𝓪𝔂𝓵𝓲𝓼𝓽 𝓜𝓪𝓷𝓪𝓰𝓮𝓻 𝓐𝓹𝓹"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#0B6F7C"
+            android:text="𝔸𝕕𝕕 𝕋𝕠 ℙ𝕝𝕒𝕪𝕝𝕚𝕤𝕥"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.42"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="489dp" />
+
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1C7C72"
+            android:text="𝔼𝕩𝕚𝕥"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.42"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="626dp" />
+
+        <EditText
+            android:id="@+id/edtSongList"
+            android:layout_width="149dp"
+            android:layout_height="34dp"
+            android:background="#E6A0B8"
+            android:backgroundTint="#DC9AB1"
+            android:ems="10"
+            android:hint="𝑺𝒐𝒏𝒈 𝑳𝒊𝒔𝒕"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="238dp" />
+
+        <Button
+            android:id="@+id/btnDetailedView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#317AB4"
+            android:text="𝔻𝕖𝕥𝕒𝕚𝕝𝕖𝕕 𝕍𝕚𝕖𝕨 𝕊𝕔𝕣𝕖𝕖𝕟"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="561dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
